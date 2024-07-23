@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-#define MAX_LEN 256
+#define MAX_BUFFER_SIZE 512
 
 #define MAX_SOURCE_FILE_COUNT 256
 #define MAX_TARGET_COUNT 256
@@ -13,8 +13,18 @@
 
 #define ERR_NOT_ENOUGH_ARGS "Not enough arguments passed to function."
 #define ERR_TOO_MANY_ARGS "Argument count surpasses MAX_ARGUMENT_COUNT."
+#define ERR_LANGUAGE_NOT_SUPPORTED "That language is not supported by sabr yet."
+#define ERR_LANGUAGE_NOT_SET "That function requires a language to be set. Run language() prior to this."
+#define ERR_FILE_DOESNT_EXIST "File does not exist."
+
+typedef enum {
+    C,
+    CPP,
+    UNSET
+} sabr_supported_language_t;
 
 typedef struct {
+    sabr_supported_language_t language;
     char *binary;
 
     size_t option_count;
@@ -53,4 +63,4 @@ typedef struct sabr_function {
 } sabr_function_t;
 
 
-#endif //SABR2_SABR_TYPES_H
+#endif /* SABR2_SABR_TYPES_H */
