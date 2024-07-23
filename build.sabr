@@ -1,0 +1,4 @@
+cc(gcc)
+cc_options(-std=c89)
+
+target(sabr main.c sabr.c)
